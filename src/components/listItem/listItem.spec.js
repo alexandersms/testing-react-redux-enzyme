@@ -46,4 +46,21 @@ describe('ListItem Component', () => {
 
     });
 
+    describe('Should NOT render', () => {
+
+        let wrapper;
+        beforeEach(() => {
+            const props = {
+                desc: 'Some Text'
+            }
+            wrapper = shallow(<ListItem {...props} />)
+        });
+
+        it('Should Component is not rendered', () => {
+            const component = findByTestAttr(wrapper, 'listItemComponent');
+            expect(component.length).toBe(0)
+        });
+
+    });
+
 });
