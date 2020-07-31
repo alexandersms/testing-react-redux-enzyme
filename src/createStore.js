@@ -3,7 +3,8 @@ import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import RootReducer from './reducers';
 
-export const store = createStore(
-    RootReducer,
-    composeWithDevTools(applyMiddleware(ReduxThunk))
-);
+export const middlewares = [ReduxThunk]
+
+export const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(...middlewares))(createStore)
+
+export const store = createStoreWithMiddleware(RootReducer)
